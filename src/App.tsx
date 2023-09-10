@@ -13,7 +13,13 @@ import Login from "./pages/login/Login";
 import Product from "./pages/product/Product";
 import User from "./pages/user/User";
 
+import {
+  QueryClient,
+  QueryClientProvider,
+} from "@tanstack/react-query";
 
+
+const queryClient = new QueryClient();
 function App() {
   const Layout = () => {
     return (
@@ -24,7 +30,9 @@ function App() {
             <Menu />
           </div>
           <div className="contentContainer">
+          <QueryClientProvider client={queryClient}>
               <Outlet />
+            </QueryClientProvider>
           </div>
         </div>
         <Footer/>
